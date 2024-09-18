@@ -1,0 +1,19 @@
+# ignored options for 'linkstack'
+# --detach
+name: rain-linkstack
+services:
+    linkstack:
+        container_name: linkstack
+        ports:
+            - 3013:80
+            - 3014:443
+        restart: unless-stopped
+        volumes:
+            - type: volume
+              source: linkstack
+              target: /htdocs
+        image: linkstackorg/linkstack
+volumes:
+    linkstack:
+        external: true
+        name: linkstack
